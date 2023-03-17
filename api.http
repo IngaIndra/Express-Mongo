@@ -1,0 +1,17 @@
+GET http://localhost:8080/api/users
+Content-Type: application/json
+
+###
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+    "name": "Indra",
+    "email": "i.upp@gmail.com"
+}
+
+###
+DELETE http://localhost:8080/api/users/6412bad6b2bb7f9f14b4ce2c
+Content-Type: application/json
+
+###
