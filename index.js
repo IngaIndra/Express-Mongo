@@ -71,3 +71,10 @@ cloudinary.config({
 app.listen(PORT, () => {
   console.log("http://localhost:" + PORT);
 });
+
+// app.post("/files", upload.single("image"), async (req, res) => {
+//   const uploadedFile = await cloudinary.v2.uploader.upload(req.file.path);
+//   res.json(uploadedFile);
+// });
+
+// app.use("/uploads", express.static("uploads"));
