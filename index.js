@@ -1,8 +1,8 @@
 import express from "express";
 import "./configs/mongoose-config.js";
 import userRouter from "./routes/users.router.js";
-import todoCategoriesRouter from "./routes/todoCategories-router.js";
-import todoRouter from "./routes/todo-router.js";
+// import todoCategoriesRouter from "./routes/todoCategories-router.js";
+// import todoRouter from "./routes/todo-router.js";
 import multer from "multer";
 import { nanoid } from "nanoid";
 import cloudinary from "cloudinary";
@@ -56,24 +56,17 @@ const PORT = 8080;
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 app.use("/api/users", userRouter);
-app.use("/api/todo/categories", todoCategoriesRouter);
-app.use("/api/todo", todoRouter);
-app.use(cors());
+// app.use("/api/todo/categories", todoCategoriesRouter);
+// app.use("/api/todo", todoRouter);
 
 cloudinary.config({
   cloud_name: "df8az1u5k",
   api_key: "792374388872524",
   api_secret: "9TvZ89y4BmTTvNM5TY1Gyiasqtc",
 });
-
-app.post("/files", upload.single("image"), async (req, res) => {
-  const uploadedFile = await cloudinary.v2.uploader.upload(req.file.path);
-  res.json(uploadedFile);
-});
-
-app.use("/uploads", express.static("uploads"));
 
 app.listen(PORT, () => {
   console.log("http://localhost:" + PORT);
